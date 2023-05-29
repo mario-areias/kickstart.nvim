@@ -160,7 +160,16 @@ require('lazy').setup({
   --    An additional note is that if you only copied in the `init.lua`, you can just comment this line
   --    to get rid of the warning telling you that there are not plugins in `lua/custom/plugins/`.
   { import = 'custom.plugins' },
-}, {})
+}, {
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        -- Disable some plugins for better startup time
+        'netrwPlugin',
+      },
+    },
+  },
+})
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -225,9 +234,6 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
 -- Center search to avoid disorientation
 vim.keymap.set('n', 'n', 'nzz', { noremap = true, silent = true })
 vim.keymap.set('n', 'N', 'Nzz', { noremap = true, silent = true })
-
--- go to explorer view
-vim.keymap.set("n", "<leader>ex", vim.cmd.Ex)
 
 -- paste over a selected text, not adding the deleted characters to any register
 vim.keymap.set("x", "<leader>p", [["_dP]])
