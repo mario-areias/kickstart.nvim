@@ -47,7 +47,7 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim',       opts = {} },
+      { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -243,7 +243,16 @@ vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
 
 -- Tell copilot that we have mapped the default keybindings
 vim.g.copilot_assume_mapped = true
--- [[ Highlight on yank ]]
+
+-- Configure these extensions type to have proper highlighting by treesitter
+vim.filetype.add({
+  extension = {
+    tfvars = 'terraform',
+    tfstate = 'json',
+  }
+}
+
+) -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -299,7 +308,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim' },
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim', 'terraform' },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
@@ -439,6 +448,7 @@ local servers = {
     },
   },
   -- tsserver = {},
+  terraformls = {},
 
   lua_ls = {
     Lua = {
