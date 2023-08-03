@@ -231,6 +231,10 @@ vim.keymap.set('n', '<A-k>', ':m .-2<CR>==', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
 
+-- Put the cursor in the middle when navigating through different cursor locations (i.e jumping lists)
+vim.keymap.set('n', '<C-o>', '<C-o>zz', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-i>', '<C-i>zz', { noremap = true, silent = true })
+
 -- Center search to avoid disorientation
 vim.keymap.set('n', 'n', 'nzz', { noremap = true, silent = true })
 vim.keymap.set('n', 'N', 'Nzz', { noremap = true, silent = true })
@@ -449,6 +453,8 @@ local servers = {
   },
   -- tsserver = {},
   terraformls = {},
+  jsonls = {},
+  yamlls = {},
 
   lua_ls = {
     Lua = {
