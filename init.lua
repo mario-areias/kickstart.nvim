@@ -248,6 +248,12 @@ vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
 -- Tell copilot that we have mapped the default keybindings
 vim.g.copilot_assume_mapped = true
 
+-- opens git blame buffer
+vim.keymap.set("n", "<leader>gb", [[:Git blame<CR>]])
+
+-- opens file in Github
+vim.keymap.set("n", "<leader>gh", [[:GBrowse<CR>]])
+
 -- Configure these extensions type to have proper highlighting by treesitter
 vim.filetype.add({
   extension = {
