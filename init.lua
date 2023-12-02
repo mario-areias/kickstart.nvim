@@ -79,6 +79,7 @@ require('lazy').setup({
         vim.keymap.set('n', '[c', require('gitsigns').prev_hunk, { buffer = bufnr, desc = 'Go to Previous Hunk' })
         vim.keymap.set('n', ']c', require('gitsigns').next_hunk, { buffer = bufnr, desc = 'Go to Next Hunk' })
         vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
+        vim.keymap.set('n', '<leader>rh', require('gitsigns').reset_hunk, { buffer = bufnr, desc = '[R]eset [H]unk' })
       end,
     },
   },
@@ -458,10 +459,11 @@ local servers = {
       },
     },
   },
-  -- tsserver = {},
+  tsserver = {},
   terraformls = {},
   jsonls = {},
   yamlls = {},
+  pylsp = {},
 
   lua_ls = {
     Lua = {
@@ -542,5 +544,6 @@ cmp.setup {
   },
 }
 
+vim.lsp.set_log_level("off")
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
