@@ -12,7 +12,10 @@ return {
 	config = function()
 		require('neo-tree').setup {
 			filesystem = {
-				follow_current_file = true,
+				follow_current_file = {
+					enabled = false,
+				}
+				-- follow_current_file = true,
 			}
 		}
 	end,
