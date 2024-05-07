@@ -13,7 +13,7 @@ return {
 		require('neo-tree').setup {
 			filesystem = {
 				follow_current_file = {
-					enabled = false,
+					enabled = true,
 				}
 				-- follow_current_file = true,
 			}
